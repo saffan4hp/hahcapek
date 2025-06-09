@@ -493,13 +493,17 @@
             object-fit: contain;
             filter: brightness(0) invert(1);
         }
-        video {
+        .video-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            padding: 20px;
         }
+        video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1)
     </style>
 </head>
 <body>
@@ -668,14 +672,14 @@
                     </li>
                 </ol>
                 <img src="/WhatsApp Image 2025-05-29 at 21.54.55_e2212f11.jpg" alt="Foto langkah proses pembuatan" />
+                <div class="video-container">
                 <video
-                    width="560"
-                    height="315"
                     controls
                     autoplay muted>
                 <source src="/WhatsApp Video 2025-06-05 at 09.47.16_b20f2dc4.mp4"
                     type="video/mp4" >
                 </video>
+                </div>
             </div>
         </div>
     </section>
