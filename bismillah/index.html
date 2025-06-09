@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Green Electricity Generator - 1 (XI3)</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fefefa;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        a {
+            text-decoration: none;
+            color: #007acc;
+            transition: color 0.3s ease;
+        }
+        a:hover,
+        a:focus {
+            color: #005a9e;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-radius: 16px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            cursor: pointer;
+            margin-left: 25px;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        .nav-list li a {
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.4rem 0.7rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-list li a:hover,
+        .nav-list li a:focus {
+            background-color: #007acc;
+            color: #fff;
+        }
+        .btn {
+            cursor: pointer;
+            font-weight: 600;
+            border: none;
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+        }
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            box-shadow: 0 7px 20px rgba(0, 242, 254, 0.6);
+        }
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            margin-right: 32px;
+        }
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background: #ddd;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        #main {
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: #fff;
+            padding: 70px 0 90px;
+            text-align: center;
+        }
+        #main .main-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .intro-heading {
+            font-weight: 300;
+            font-size: 2.2rem;
+            margin-bottom: 0.2rem;
+        }
+        .main-heading {
+            font-size: 3rem;
+            margin: 0.2rem 2rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+        #main p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #185a9d;
+            margin-bottom: 6px;
+        }
+        .line {
+            width: 80px;
+            height: 4px;
+            background: #43cea2;
+            margin: 0 auto;
+            border-radius: 3px;
+        }
+
+        /* Services Section */
+        #services {
+            background: #f9f9f9;
+            padding: 60px 0;
+        }
+        .services {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .service {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        .service h3 {
+            margin-top: 15px;
+            font-size: 1.4rem;
+            color: #185a9d;
+        }
+        .service p {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+        .service img {
+            height: 300px;
+            width: 250px;
+            padding: auto;
+        }
+
+        /* Description Section */
+        #description {
+            padding: 50px 0;
+            color: #444;
+            text-align: center;
+        }
+        #description h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #185a9d;
+        }
+        #description p {
+            max-width: 550px;
+            margin: 0 auto 20px;
+            font-size: 1.15rem;
+            font-weight: 400;
+        }
+        #description img {
+            width: 50px;
+            opacity: 0.3;
+            margin: 0 10px;
+        }
+
+        /* Step Section */
+        #step {
+            background: #f0f7f9;
+            padding: 50px 0;
+        }
+        #step ol {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            padding-left: 20px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        #step ol li {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            cursor: default;
+            position: relative;
+        }
+        /* Tooltip styling */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            font-weight: 600;
+            color: #185a9d;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            background-color: #43cea2;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            box-shadow: 0 5px 14px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .tooltip:hover .tooltip-text,
+        .tooltip:focus-within .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* The image in step section */
+        #step img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+        }
+        #step iframe {
+            display: block;
+            margin: 30px auto 0;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Testimonial Section */
+        #testimonial {
+            background: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #2c3e50;
+            font-style: italic;
+            position: relative;
+        }
+        #testimonial h1 {
+            font-size: 1.9rem;
+            margin: 1.5rem 0 2rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        #testimonial .test-quo {
+            height: 100px;
+            width: 100px;
+        }
+        #testimonial img[alt="Bunyi hukum dinamo"] {
+            width: 40px;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 40px;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        .profile img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #43cea2;
+        }
+        .profile h4 {
+            font-weight: 700;
+            color: #185a9d;
+            margin: 0;
+        }
+
+        /* Pro-Cons Section */
+        #pro-cons {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 50px 20px;
+            flex-wrap: wrap;
+            background: #f9f9f9;
+        }
+        #pro-cons > div {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            width: 280px;
+            text-align: center;
+        }
+        #pro-cons h2 {
+            color: #185a9d;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        #pro-cons ul {
+            list-style: none;
+            padding-left: 0;
+            color: #555;
+        }
+        #pro-cons ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+            font-weight: 500;
+        }
+        #pro-cons ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* About Us Section */
+        #about-us {
+            padding: 60px 20px;
+            background: #fff;
+        }
+        #about-us .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .about-content {
+            flex: 1 1 350px;
+            max-width: 450px;
+        }
+        .about-content h4 {
+            color: #43cea2;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .about-content h1 {
+            font-size: 2.7rem;
+            color: #185a9d;
+            margin-bottom: 20px;
+        }
+        .about-content ul {
+            list-style: disc inside;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        .about-content ul li {
+            margin-bottom: 8px;
+        }
+        .about-content button {
+            font-size: 1.1rem;
+        }
+        .about-image {
+            flex: 1 1 300px;
+            max-width: 400px;
+        }
+        .about-image img {
+            border-radius: 20px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+            min-height: 280px;
+            background: #ddd;
+        }
+
+        /* Questions Section */
+        #questions {
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        #questions h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        #questions p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        #questions button {
+            background: transparent;
+            border: 2px solid #fff;
+            padding: 0.7rem 2.4rem;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #fff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        #questions button:hover,
+        #questions button:focus {
+            background-color: #fff;
+            color: #185a9d;
+            border-color: #fff;
+            box-shadow: 0 5px 15px rgba(255,255,255,0.6);
+        }
+
+        footer {
+            background: #222;
+            color: #eee;
+            padding: 25px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+        footer .footer {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+            margin: 0;
+        }
+        footer .footer li a {
+            color: #ddd;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        footer .footer li a:hover,
+        footer .footer li a:focus {
+            color: #43cea2;
+        }
+        .Footerlogo {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        iframe {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <section id="main">
+        <div class="container">
+            <nav>
+                <img src="/bismillah/WhatsApp_Image_2025-06-04_at_11.51.39_c22fdf51-removebg-preview.png" alt="Logo" class="logo"/>
+                <ul class="nav-list" role="navigation" aria-label="Primary Navigation">
+                    <li><a href="#description">Home</a></li>
+                    <li><a href="#about-us">About</a></li>
+                    <li><a href="#step">How</a></li>
+                    <li><a href="#questions">Contact</a></li>
+                    <li><button class="btn btn-secondary" type="button"><a href="#services">Get Ready!</a></button></li>
+                </ul>
+            </nav>  
+
+            <div class="main-content" role="main">
+                <h1 class="intro-heading">Let's meet</h1>
+                <h1 class="main-heading"><i>GE</i> Generator</h1>
+                <p>
+                    Persembahan P5 Rekayasa Teknologi dari kelompok 1 XI3
+                </p>
+                <button class="btn btn-primary" type="button">Get started</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" aria-labelledby="services-title">
+        <div class="container">
+            <div class="section-title">
+                <h1 id="services-title">Komponen Utama Project Kita</h1>
+                <div class="line"></div>
+            </div>
+            <div class="services">
+                <div class="service" tabindex="0" aria-describedby="desc-manual">
+                    <img src="/bismillah/WhatsApp Image 2025-06-03 at 13.45.58_2f7eb441.jpg" alt="Pemutar manual" />
+                    <h3>Pemutar Manual</h3>
+                    <p id="desc-manual">
+                        Dinamo manual bekerja dengan mengubah energi mekanik 
+                        menjadi energi listrik melalui induksi elektromagnetik
+                        saat porosnya diputar.
+                    </p>
+                </div>
+                <div class="service" tabindex="0" aria-describedby="desc-dc">
+                    <img src="https://ecs7.tokopedia.net/img/cache/700/attachment/2020/5/4/158861048676346/158861048676346_6c94bac7-b48b-4d2f-87ff-322cd6cd1a20.png" alt="Dinamo DC" />
+                    <h3>Generator DC</h3>
+                    <p id="desc-dc">
+                        Dinamo DC adalah perangkat yang mengubah energi mekanik
+                        menjadi listrik arus searah melalui prinsip induksi 
+                        elektromagnetik.
+                    </p>
+                </div>
+                <div class="service" tabindex="0" aria-describedby="desc-clap">
+                    <img src="/bismillah/WhatsApp Image 2025-06-03 at 17.40.57_b54a5ecf.jpg" alt="Clap Switch" />
+                    <h3>Clap Switch</h3>
+                    <p id="desc-clap">
+                       Clap switch adalah rangkaian elektronik yang mendeteksi
+                       suara tepukan tangan dan mengubahnya menjadi sinyal untuk
+                       menghidupkan atau mematikan perangkat listrik.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="description" aria-label="Description">
+        <div class="container">
+            <img src="https://www.pngmart.com/files/23/Quote-PNG-Photos.png" alt="Quote icon" />
+            <h1>Dive deeper!</h1>
+            <p><b>Green Electricity</b> generator merupakan hasil karya kami berupa generator sederhana yang digerakkan dengan roda pemutar manual sehingga dapat menghasilkan listrik dan lampu dapat menyala dengan sensor suara. hasil karya kami menggunakan konsep teknologi sederhana.  tujuan kami membuat karya untuk mempermudah teman teman disabilitas dalam mengoperasikan alat elektronik dan menghasilkan energi yang ramah lingkungan.</p>
+            <img src="https://www.pngmart.com/files/23/Quote-PNG-Photos.png" alt="Quote icon" />
+        </div>
+    </section>
+
+    <section id="step" aria-labelledby="steps-title">
+        <div class="container">
+            <div class="section-title">
+                <h1 id="steps-title">Langkah-Langkah:</h1>
+                <div class="line"></div>
+            </div>
+            <div class="step">
+                <ol>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Alat putar:
+                            <span class="tooltip-text">Gabungkan 2 kaset yang dibatasi Cello Tipe kertas dengan Lem Tembak kemudian beri karet pada Cello Tipe Kertas untuk nantinya digabungkan dengan Generator</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Gergaji spidol bekas:
+                            <span class="tooltip-text">Gergaji spidol bekas menjadi beberapa bagian untuk dimasukkan ke lubang bagian tengah kaset.</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Tuas:
+                            <span class="tooltip-text">Sisa spidol di potong dan dilapisi lakban menjadi tuas Alat Putar</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Alas produk:
+                            <span class="tooltip-text">Gabungkan 2 karton utuh dengan Lem G</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Penopang kaset:
+                            <span class="tooltip-text">Cutter beberapa karton dengan ukuran sesuai untuk membentuk balok dan bidang miring kemudian tempelkan karton penopang yang sudah jadi ke ujung Alas produk ujung pertama gabungkan dengan Alat Putar yang sudah jadi</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            LED light:
+                            <span class="tooltip-text">Potong Kaset sesuai bentuk yang diinginkan gabungkan menggunakan lem tembak bolongkan tengahnya sedikit  dan gabungkan dengan tutup botol yang tengahnya sudah di bolongi kemudian masukkan lampu setelah jadi tempelkan pada Alas produk ujung kedua</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Generator:
+                            <span class="tooltip-text">Tempelkan Generator di antara Alat Putar dan LED Light pada Alas Produk</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Penyambungan Kabel:
+                            <span class="tooltip-text">Sambungkan kabel Generator</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Pemasangan Sakelar:
+                            <span class="tooltip-text">Gabungkan kabel Generator dengan Led 5mm dengan cara dililit</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Penghubungan Daya:
+                            <span class="tooltip-text">Tarik karet Alat Putar sambungkan dengan ujung generator</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Uji Fungsi Awal:
+                            <span class="tooltip-text">Sambungkan daya. Nyalakan sakelar dan periksa apakah LED Light</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Uji Efektivitas:
+                            <span class="tooltip-text">Matikan lampu ruangan untuk menguji ke efektivan Generator LED Light</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Penyempurnaan:
+                            <span class="tooltip-text">Jika mati atau kedap kedip, periksa kembali celah-celah yang mungkin bocor dan rekatkan kembali. Pastikan lampu menyala dengan terang. Jika ada masalah lain, lakukan troubleshooting dan perbaikan.</span>
+                        </span></b>
+                    </li>
+                    <li>
+                        <b><span class="tooltip" tabindex="0">
+                            Finishing:
+                            <span class="tooltip-text">Jika perlu, tambahkan hiasan atau label pada produk yang sudah jadi.</span>
+                        </span></b>
+                    </li>
+                </ol>
+                <img src="/bismillah/WhatsApp Image 2025-05-29 at 21.54.55_e2212f11.jpg" alt="Foto langkah proses pembuatan" />
+                <iframe
+                    width="560"
+                    height="315"
+                    src="/bismillah/WhatsApp Video 2025-06-05 at 09.47.16_b20f2dc4.mp4"
+                    title="Langkah bikin generator"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonial" aria-label="Testimonial">
+        <div class="container">
+            <img src="https://www.pngmart.com/files/23/Quote-PNG-Photos.png" alt="Quote icon" class="test-quo"/>
+            <h1>
+                "Gaya gerak listrik yang diinduksi dalam suatu rangkaian
+                tertutup sebanding dengan laju perubahan fluks magnetik yang 
+                melintasi rangkaian tersebut."
+            </h1>
+            <div class="profile">
+                <img src="https://th.bing.com/th/id/OIP.EHZfowfgbTGyn41dAHq1DwHaGL?r=0&rs=1&pid=ImgDetMain" alt="gambar michael faraday" />
+                <h4>-Michael Faraday</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="pro-cons" aria-label="Pro and Cons">
+        <div class="container">
+            <div class="pro" tabindex="0">
+                <h2>Kelebihan</h2>
+                <ul>
+                    <li>Ramah Lingkungan</li>
+                    <li>Mengurangi Emisi Karbon</li>
+                    <li>Biaya Rendah</li>
+                    <li>Mudah dibuat dan dipelajari</li>
+                    <li>Tidak bergantung listrik PLN</li>
+                    <li>Pengoperasian Praktis</li>
+                </ul>
+            </div>
+            <div class="cons" tabindex="0">
+                <h2>Kekurangan</h2>
+                <ul>
+                    <li>Output listrik terbatas</li>
+                    <li>Tenaga bergantung manusia</li>
+                    <li>Sensitivitas terbatas</li>
+                    <li>Tegangan tidak stabil</li>
+                    <li>Kurang efisien</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-us" aria-labelledby="about-us-title">
+        <div class="container">
+            <div class="about-content">
+                <h4>ABOUT US</h4>
+                <h1 id="about-us-title">Meet the designer!</h1>
+                <ul>
+                    <li>Saffanah Putri Hidayat (Lead)</li>
+                    <li>Atha Orizayu Ima Rizky</li>
+                    <li>Keshya Inalia Ayu Priyadi</li>
+                    <li>Cahayu Paraspuan</li>
+                    <li>Sausan Mochran</li>
+                </ul>
+                <button class="btn btn-primary" type="button">Let's talk</button>
+            </div>
+            <div class="about-image">
+                <img src="/bismillah/WhatsApp Image 2025-06-05 at 09.52.37_8eece64f.jpg" alt="Foto team" />
+            </div>
+        </div>
+    </section>
+
+    <section id="questions" aria-label="Questions">
+        <div class="container">
+            <h1>MAU NANYA GAAKK??</h1>
+            <p>jangan malu yh kalo mau nanya, agar tidak sesat di jalan</p>
+            <button class="btn btn-primary" type="button">Let's Talk!</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <ul class="footer" role="contentinfo">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="https://docs.google.com/document/d/1wf0Vk2Nk79BTI3SA7Jil374u1ijNL200D-yee_sEqEM/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Report</a></li>
+                <li><a href="http://wa.me/6285797477232" target="_blank" rel="noopener noreferrer">Contact Us</a></li>
+            </ul>
+            <img src="/bismillah/WhatsApp_Image_2025-06-04_at_11.51.39_c22fdf51-removebg-preview.png" alt="Logo ab" class="Footerlogo" />
+            <p>Go Green!</p>
+        </div>
+    </footer>
+</body>
+</html>
+
