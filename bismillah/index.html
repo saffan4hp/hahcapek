@@ -54,15 +54,31 @@
             border-radius: 16px;
             flex-wrap: wrap;
         }
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav a {
-                margin-bottom: 10px;
-            }
+        .nav-container {
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           padding: 10px 20px;
         }
+        .nav-list a {
+           margin: 0 10px;
+           text-decoration: none;
+           color: #007bff;
+           font-weight: bold;
+        }
+
+  @media (max-width: 600px) {
+     .nav-container {
+       flex-direction: column;
+       align-items: center;
+  }
+
+     .nav-links {
+       display: flex;
+       flex-direction: column;
+       gap: 8px;
+  }
+}
         .logo {
             width: 50px;
             height: 50px;
@@ -111,11 +127,13 @@
             box-shadow: 0 7px 20px rgba(0, 242, 254, 0.6);
         }
         .btn-secondary {
-            background: #f0f0f0;
-            color: #333;
-            border: 1px solid #ccc;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-            margin-right: 32px;
+              position: absolute;
+              top: 20px;
+              right: 20px;
+              background: white;
+              border-radius: 20px;
+              padding: 10px 15px;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .btn-secondary:hover,
         .btn-secondary:focus {
@@ -520,6 +538,7 @@
     <section id="main">
         <div class="container">
             <nav>
+                <div class="nav-container">
                 <img src="/WhatsApp_Image_2025-06-04_at_11.51.39_c22fdf51-removebg-preview.png" alt="Logo" class="logo"/>
                 <ul class="nav-list" role="navigation" aria-label="Primary Navigation">
                     <li><a href="#description">Home</a></li>
@@ -528,6 +547,7 @@
                     <li><a href="#questions">Contact</a></li>
                     <li><button class="btn btn-secondary" type="button"><a href="#services">Get Ready!</a></button></li>
                 </ul>
+                </div>
             </nav>  
 
             <div class="main-content" role="main">
