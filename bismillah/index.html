@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+H<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -334,40 +334,49 @@
         }
 
         /* Pro-Cons Section */
-        #pro-cons {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            padding: 50px 20px;
-            flex-wrap: wrap;
-            background: #f9f9f9;
-        }
-        #pro-cons > div {
-            background: white;
-            padding: 25px 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
-            width: 280px;
-            text-align: center;
-        }
-        #pro-cons h2 {
-            color: #185a9d;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-        #pro-cons ul {
-            list-style: none;
-            padding-left: 0;
-            color: #555;
-        }
-        #pro-cons ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid #ddd;
-            font-weight: 500;
-        }
-        #pro-cons ul li:last-child {
-            border-bottom: none;
-        }
+ 
+#pro-cons {
+    padding: 50px 20px;
+    background: #f9f9f9;
+}
+
+.pro-cons-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pro, .cons {
+    flex: 1 1 300px;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    text-align: center;
+}
+
+.pro h2, .cons h2 {
+    color: #185a9d;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.pro ul, .cons ul {
+    list-style: none;
+    padding-left: 0;
+    color: #555;
+}
+
+.pro ul li, .cons ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    font-weight: 500;
+}
+
 
         /* About Us Section */
         #about-us {
@@ -701,13 +710,13 @@
 
     <section id="pro-cons" aria-label="Pro and Cons">
         <div class="container">
+         <div class="pro-cons-wrapper">
             <div class="pro" tabindex="0">
                 <h2>Kelebihan</h2>
                 <ul>
                     <li>Ramah Lingkungan</li>
                     <li>Mengurangi Emisi Karbon</li>
                     <li>Biaya Rendah</li>
-                    <li>Mudah dibuat dan dipelajari</li>
                     <li>Tidak bergantung listrik PLN</li>
                     <li>Pengoperasian Praktis</li>
                 </ul>
@@ -721,6 +730,7 @@
                     <li>Tegangan tidak stabil</li>
                     <li>Kurang efisien</li>
                 </ul>
+            </div>
             </div>
         </div>
     </section>
