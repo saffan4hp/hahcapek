@@ -285,6 +285,29 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
+        .step-columns {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.step-left, .step-right {
+    width: 300px;
+    font-size: 1rem;
+    color: #333;
+    padding: 0;
+    list-style-position: inside;
+}
+
+.step-left li,
+.step-right li {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+
         /* Testimonial Section */
         #testimonial {
             background: #fff;
@@ -594,7 +617,7 @@
                 <div class="line"></div>
             </div>
             <div class="step">
-                <ol>
+                <ol class="step-left">
                     <li>
                         <b><span class="tooltip" tabindex="0">
                             Alat putar:
@@ -637,6 +660,8 @@
                             <span class="tooltip-text">Tempelkan Generator di antara Alat Putar dan LED Light pada Alas Produk</span>
                         </span></b>
                     </li>
+                </ol>
+                <ol class="step-right">
                     <li>
                         <b><span class="tooltip" tabindex="0">
                             Penyambungan Kabel:
